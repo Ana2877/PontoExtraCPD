@@ -5,6 +5,10 @@ from src.merge_sort import *
 from src.merge_sort import *
 from src.heap_sort import *
 from src.quick_sort_random import *
+from src.insertion_sort import *
+from src.insertion_sor_binary_search import *
+from src.bubble_sort import *
+from src.shell_sort import *
 
 class TestRWFiles(unittest.TestCase):
     def test_read_bin(self):
@@ -43,6 +47,33 @@ class TestRWFiles(unittest.TestCase):
         # print(array_to_order)
         inPlaceQuickSort(array_to_order,0,len(array_to_order)-1)    
         # print(array_to_order)
+        self.assertEqual(array_expected, array_to_order)
+
+    def test_insertion_sort(self):
+        array_to_order = [8, 8, 7, 5, 3, 5, 1, 9, 2, 56]
+        array_expected = [1, 2, 3, 5, 5, 7, 8, 8, 9, 56]
+        insertionsort(array_to_order)
+        self.assertEqual(array_expected, array_to_order)
+
+    def test_insertion_sort_binary_search(self):
+        array_to_order = [8, 8, 7, 5, 3, 5, 1, 9, 2, 56]
+        array_expected = [1, 2, 3, 5, 5, 7, 8, 8, 9, 56]
+        array_sorted = insertion_sort(array_to_order)
+        self.assertEqual(array_expected, array_sorted)
+
+    def test_bubble_sort(self):
+        array_to_order = [8, 8, 7, 5, 3, 5, 1, 9, 2, 56]
+        array_expected = [1, 2, 3, 5, 5, 7, 8, 8, 9, 56]
+        bubbleSort(array_to_order)
+        self.assertEqual(array_expected, array_to_order)
+
+    def test_shell_sort(self):
+        array_to_order = [8, 8, 7, 5, 3, 5, 1, 9, 2, 56]
+        array_expected = [1, 2, 3, 5, 5, 7, 8, 8, 9, 56]
+        shellSort(array_to_order)
+        self.assertEqual(array_expected, array_to_order)
+
+
 
     
 
