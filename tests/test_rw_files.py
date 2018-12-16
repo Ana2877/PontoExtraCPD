@@ -9,6 +9,8 @@ from src.insertion_sort import *
 from src.insertion_sor_binary_search import *
 from src.bubble_sort import *
 from src.shell_sort import *
+from src.comb_sort import *
+from src.selection_sort import *
 
 class TestRWFiles(unittest.TestCase):
     def test_read_bin(self):
@@ -20,6 +22,15 @@ class TestRWFiles(unittest.TestCase):
                 number = struct.unpack('i', file.read(4))[0]
                 array_random_numbers.append(number)
             self.assertEqual(array_random_numbers,array_expected)
+
+    def test_array_size(self):
+        array_to_order = read_random_numbers()
+        self.assertEqual(len(array_to_order), 10000000)
+        array_ascending = mergeSort(array_to_order, ascending=True)
+        self.assertEqual(len(array_ascending), 10000000)
+        array_descending = mergeSort(array_to_order, ascending=False)
+        self.assertEqual(len(array_descending), 10000000)
+
 
     def test_merge_sort(self):
         array_to_order = [8, 8, 7, 5, 3, 5, 1, 9, 2, 56]
@@ -73,6 +84,17 @@ class TestRWFiles(unittest.TestCase):
         shellSort(array_to_order)
         self.assertEqual(array_expected, array_to_order)
 
+    def test_comb_sort(self):
+        array_to_order = [8, 8, 7, 5, 3, 5, 1, 9, 2, 56]
+        array_expected = [1, 2, 3, 5, 5, 7, 8, 8, 9, 56]
+        combSort(array_to_order)
+        self.assertEqual(array_expected, array_to_order)
+
+    def test_selection_sort(self):
+        array_to_order = [8, 8, 7, 5, 3, 5, 1, 9, 2, 56]
+        array_expected = [1, 2, 3, 5, 5, 7, 8, 8, 9, 56]
+        selection_sort(array_to_order)
+        self.assertEqual(array_expected, array_to_order)
 
 
     
