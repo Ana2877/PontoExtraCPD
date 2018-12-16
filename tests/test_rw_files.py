@@ -2,6 +2,9 @@ import unittest
 
 from src.read_write_files import *
 from src.merge_sort import *
+from src.merge_sort import *
+from src.heap_sort import *
+from src.quick_sort_random import *
 
 class TestRWFiles(unittest.TestCase):
     def test_read_bin(self):
@@ -23,6 +26,23 @@ class TestRWFiles(unittest.TestCase):
         self.assertEqual(array_ascending, array_expected_asc)
         array_descending = mergeSort(array_to_order, ascending=False)
         self.assertEqual(array_descending, array_expected_des)
-        print(array_ascending)
-        print(array_descending)
+        # print(array_ascending)
+        # print(array_descending)
+
+    def test_heap_sort(self):
+        array_to_order = [8, 8, 7, 5, 3, 5, 1, 9, 2, 56]
+        array_expected = [1, 2, 3, 5, 5, 7, 8, 8, 9, 56]
+        # print(array_to_order)
+        heap_sort(array_to_order)
+        # print(array_to_order)
+        self.assertEqual(array_expected, array_to_order)
+
+    def test_quick_sort_random(self):
+        array_to_order = [8, 8, 7, 5, 3, 5, 1, 9, 2, 56]
+        array_expected = [1, 2, 3, 5, 5, 7, 8, 8, 9, 56]
+        # print(array_to_order)
+        inPlaceQuickSort(array_to_order,0,len(array_to_order)-1)    
+        # print(array_to_order)
+
+    
 
