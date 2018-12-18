@@ -1,31 +1,30 @@
-def binary_search(arr, val, start, end): 
-    # we need to distinugish whether we should insert 
-    # before or after the left boundary. 
-    # imagine [0] is the last step of the binary search 
-    # and we need to decide where to insert -1 
-    if start == end: 
+def binary_search(arr, val, start, end, comparacoes): 
+    if start == end:
         if arr[start] > val: 
-            return start 
+            return start , comparacoes
         else: 
-            return start+1
-  
-    # this occurs if we are moving beyond left\'s boundary 
-    # meaning the left boundary is the least position to 
-    # find a number greater than val 
+            return start+1, comparacoes
+
     if start > end: 
-        return start 
+        return start , comparacoes
   
     mid = int((start+end)/2)
+    comparacoes = comparacoes + 1
     if arr[mid] < val: 
-        return binary_search(arr, val, mid+1, end) 
-    elif arr[mid] > val: 
-        return binary_search(arr, val, start, mid-1) 
+        return binary_search(arr, val, mid+1, end, comparacoes)
+    elif arr[mid] > val:
+        comparacoes = comparacoes + 1
+        return binary_search(arr, val, start, mid-1, comparacoes) 
     else: 
-        return mid 
+        comparacoes = comparacoes + 1
+        return mid, comparacoes
   
-def insertion_sort(arr): 
+def insertion_sort(arr):
+    comparacoes = 0
+    trocas = 0
     for i in range(1, len(arr)): 
-        val = arr[i] 
-        j = binary_search(arr, val, 0, i-1) 
-        arr = arr[:j] + [val] + arr[j:i] + arr[i+1:] 
-    return arr 
+        val = arr[i]
+        j, comparacoes = binary_search(arr, val, 0, i-1, comparacoes) 
+        arr = arr[:j] + [val] + arr[j:i] + arr[i+1:]
+        trocas = trocas + abs(i-j)
+    return arr, comparacoes, trocas

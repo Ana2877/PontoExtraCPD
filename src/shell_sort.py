@@ -3,6 +3,8 @@ def shellSort(arr):
     # Start with a big gap, then reduce the gap 
     n = len(arr) 
     gap = n//2
+    comparacoes = 0
+    trocas = 0
   
     # Do a gapped insertion sort for this gap size. 
     # The first gap elements a[0..gap-1] are already in gapped  
@@ -19,10 +21,15 @@ def shellSort(arr):
             # shift earlier gap-sorted elements up until the correct 
             # location for a[i] is found 
             j = i 
-            while  j >= gap and arr[j-gap] >temp: 
+
+            comparacoes = comparacoes + 1
+            while  j >= gap and arr[j-gap] >temp:
+                trocas = trocas + 1
                 arr[j] = arr[j-gap] 
                 j -= gap 
   
             # put temp (the original a[i]) in its correct location 
+            trocas = trocas + 1
             arr[j] = temp 
         gap //= 2
+    return comparacoes, trocas
