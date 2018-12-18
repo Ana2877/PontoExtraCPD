@@ -1,3 +1,5 @@
+import time
+
 def binary_search(arr, val, start, end, comparacoes): 
     if start == end:
         if arr[start] > val: 
@@ -22,9 +24,13 @@ def binary_search(arr, val, start, end, comparacoes):
 def insertion_sort(arr):
     comparacoes = 0
     trocas = 0
+    start_time = time.time()
     for i in range(1, len(arr)): 
         val = arr[i]
         j, comparacoes = binary_search(arr, val, 0, i-1, comparacoes) 
         arr = arr[:j] + [val] + arr[j:i] + arr[i+1:]
         trocas = trocas + abs(i-j)
-    return arr, comparacoes, trocas
+        if(time.time() - start_time)>3600:
+           return arr, comparacoes, trocas, '*'
+    end_time = (time.time() - start_time)*1000
+    return arr, comparacoes, trocas, end_time

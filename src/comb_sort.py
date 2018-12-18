@@ -1,3 +1,5 @@
+import time
+
 def getNextGap(gap): 
     gap = int((gap * 10)/13)
     if gap < 1:
@@ -7,6 +9,7 @@ def getNextGap(gap):
 def combSort(arr): 
     comparacoes = 0
     trocas = 0
+    start_time = time.time()
     n = len(arr) 
   
     gap = n 
@@ -23,4 +26,9 @@ def combSort(arr):
                 arr[i], arr[i + gap]=arr[i + gap], arr[i]
                 trocas = trocas + 1
                 swapped = True
-    return comparacoes, trocas
+            if (time.time() - start_time)>3600:
+                return comparacoes, trocas, '*'
+        if (time.time() - start_time)>3600:
+                return comparacoes, trocas, '*'       
+    end_time = (time.time() - start_time)*1000
+    return comparacoes, trocas, end_time

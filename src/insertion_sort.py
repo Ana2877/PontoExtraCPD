@@ -1,6 +1,9 @@
+import time
+
 def insertionsort(A):
     comparacoes = 0
     trocas = 0
+    start_time = time.time()
     #we start loop at second element (index 1) since the first item is already sorted
     for j in range(1,len(A)):
         key = A[j] #The next item we are going to insert into the sorted section of the array
@@ -19,4 +22,7 @@ def insertionsort(A):
             comparacoes = comparacoes - 1
         A[i+1] = key
         trocas = trocas + 1
-    return A, comparacoes, trocas
+        if (time.time() - start_time) > 3600:
+            return A, comparacoes, trocas, '*'
+    end_time = (time.time() - start_time)*1000
+    return A, comparacoes, trocas, end_time

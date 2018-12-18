@@ -1,35 +1,28 @@
+import time
+
 def shellSort(arr): 
-  
-    # Start with a big gap, then reduce the gap 
+
     n = len(arr) 
     gap = n//2
     comparacoes = 0
     trocas = 0
-  
-    # Do a gapped insertion sort for this gap size. 
-    # The first gap elements a[0..gap-1] are already in gapped  
-    # order keep adding one more element until the entire array 
-    # is gap sorted 
+    start_time = time.time()
     while gap > 0: 
   
         for i in range(gap,n): 
-  
-            # add a[i] to the elements that have been gap sorted 
-            # save a[i] in temp and make a hole at position i 
             temp = arr[i] 
-  
-            # shift earlier gap-sorted elements up until the correct 
-            # location for a[i] is found 
-            j = i 
 
+            j = i 
             comparacoes = comparacoes + 1
             while  j >= gap and arr[j-gap] >temp:
                 trocas = trocas + 1
                 arr[j] = arr[j-gap] 
-                j -= gap 
-  
-            # put temp (the original a[i]) in its correct location 
+                j -= gap  
             trocas = trocas + 1
-            arr[j] = temp 
+            arr[j] = temp
         gap //= 2
-    return comparacoes, trocas
+        if (time.time() - start_time) > 3600:
+            end_time = '*'
+            return comparacoes, trocas, end_time
+    end_time = (time.time() - start_time)*1000
+    return comparacoes, trocas, end_time
