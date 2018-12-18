@@ -2,6 +2,7 @@ import time
 
 def binary_search(arr, val, start, end, comparacoes): 
     if start == end:
+        comparacoes = comparacoes + 1
         if arr[start] > val: 
             return start , comparacoes
         else: 

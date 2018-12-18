@@ -27,8 +27,6 @@ def combSort(arr):
                 trocas = trocas + 1
                 swapped = True
             if (time.time() - start_time)>3600:
-                return comparacoes, trocas, '*'
-        if (time.time() - start_time)>3600:
-                return comparacoes, trocas, '*'       
+                return comparacoes, trocas, '*'   
     end_time = (time.time() - start_time)*1000
     return comparacoes, trocas, end_time

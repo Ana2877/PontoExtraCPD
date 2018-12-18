@@ -10,13 +10,14 @@ from sorts_action.insertion_sort_binary import *
 from sorts_action.selection_sort import *
 from sorts_action.quick_sort import *
 from sorts_action.shell_sort import *
+from sorts_action.merge_sort import *
 
 if __name__ == '__main__':
     #build the arrays
     f = open('saida.txt','w')
     array_radom = read_random_numbers()
-    array_ascending = mergeSort(array_radom, ascending=True)
-    array_descending = mergeSort(array_radom, ascending=False)
+    array_ascending, comparacoes = mergeSort(array_radom, 0, ascending=True)
+    array_descending, comparacoes = mergeSort(array_radom, 0, ascending=False)
 
     #1000 elementos
     bubble_1000(array_radom, array_ascending, array_descending)
@@ -27,6 +28,7 @@ if __name__ == '__main__':
     quick_1000(array_radom, array_ascending, array_descending)
     selection_1000(array_radom, array_ascending, array_descending)
     shell_1000(array_radom, array_ascending, array_descending)
+    merge_1000(array_radom, array_ascending, array_descending)
     
 
 

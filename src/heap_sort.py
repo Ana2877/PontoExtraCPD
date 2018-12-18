@@ -5,12 +5,15 @@ def heapify(end,i, sqc, comparacoes, trocas):
     l=2 * i + 1  
     r=2 * (i + 1)   
     max=i
-    comparacoes = comparacoes + 1
-    if l < end and sqc[i] < sqc[l]:   
-        max = l
-    comparacoes = comparacoes + 1
-    if r < end and sqc[max] < sqc[r]:   
-        max = r   
+    if l < end:
+        comparacoes = comparacoes + 1
+        if sqc[i] < sqc[l]:   
+            max = l
+    
+    if r < end:
+        comparacoes = comparacoes + 1
+        if sqc[max] < sqc[r]:   
+            max = r   
     if max != i:
         trocas = trocas + 1
         swap(i, max, sqc)   

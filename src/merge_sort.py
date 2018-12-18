@@ -1,15 +1,16 @@
-def mergeSort(L, ascending = True):
+def mergeSort(L, comparacoes, ascending = True):
     result = []  
     if len(L) == 1:
-        return L  
+        return L, comparacoes
     mid = len(L) // 2
 
-    teilliste1 = mergeSort(L[:mid])
+    teilliste1, comparacoes = mergeSort(L[:mid], comparacoes)
 
-    teilliste2 = mergeSort(L[mid:])
+    teilliste2,comparacoes = mergeSort(L[mid:], comparacoes)
 
     x, y = 0, 0
     while x < len(teilliste1) and y < len(teilliste2):
+        comparacoes = comparacoes + 1
         if teilliste1[x] > teilliste2[y]: # < for descending
             result.append(teilliste2[y])
             y = y + 1
@@ -23,7 +24,7 @@ def mergeSort(L, ascending = True):
 
     result = result + teilliste2[y:]
     if ascending == True :
-        return result
+        return result, comparacoes
     else:
         result.reverse()
-        return result
+        return result, comparacoes
