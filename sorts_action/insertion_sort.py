@@ -5,7 +5,6 @@ import time
 def insertion_1000(array_radom, array_ascending, array_descending):
     array_random_insertion = array_radom[0:1000].copy()
     array, comparacoes, trocas, end_time = insertionsort(array_random_insertion)
-    print(array_random_insertion)
     with open('saida.txt', 'a') as f:
         f.write('ISBL, ' +'R, '+ '1000, '  + str(trocas) +', ' + str(comparacoes)+ ', ' +str(end_time) + '\n')
 

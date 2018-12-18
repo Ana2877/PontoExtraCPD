@@ -5,7 +5,6 @@ import time
 def insertion_binary_1000(array_radom, array_ascending, array_descending):
     array_random_insertion_binary = array_radom[0:1000].copy()
     array, comparacoes, trocas, end_time = insertion_sort(array_random_insertion_binary)
-    print(array_random_insertion_binary)
     with open('saida.txt', 'a') as f:
         f.write('ISBB, ' +'R, '+ '1000, '  + str(trocas) +', ' + str(comparacoes)+ ', ' +str(end_time) + '\n')
 

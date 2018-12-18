@@ -5,7 +5,6 @@ import time
 def selection_1000(array_radom, array_ascending, array_descending):
     array_random_selection = array_radom[0:1000].copy()
     comparacoes, trocas, end_time = selection_sort(array_random_selection)
-    print(array_random_selection)
     with open('saida.txt', 'a') as f:
         f.write('SelS, ' +'R, '+ '1000, ' + str(trocas) +', ' + str(comparacoes)+ ', '  +str(end_time) + '\n')
 
