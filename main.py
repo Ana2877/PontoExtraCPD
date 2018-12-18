@@ -5,6 +5,9 @@ from src.merge_sort import *
 from sorts_action. bubble_sort import *
 from sorts_action. comb_sort import *
 from sorts_action.heap_sort import *
+from sorts_action.insertion_sort import *
+from sorts_action.insertion_sort_binary import *
+from sorts_action.selection_sort import *
 
 if __name__ == '__main__':
     #build the arrays
@@ -17,7 +20,18 @@ if __name__ == '__main__':
     bubble_1000(array_radom, array_ascending, array_descending)
     comb_1000(array_radom, array_ascending, array_descending)
     heap_1000(array_radom, array_ascending, array_descending)
+    insertion_1000(array_radom, array_ascending, array_descending)
 
     #10000 elementos
     bubble_10000(array_radom, array_ascending, array_descending)
     comb_10000(array_radom, array_ascending, array_descending)
+    heap_10000(array_radom, array_ascending, array_descending)
+
+    # #100000 elementos
+    # heap_100000(array_radom, array_ascending, array_descending)
+
+    # #1000000 elementos
+    # heap_1000000(array_radom, array_ascending, array_descending)
+
+    # #10000000 elementos
+    # heap_10000000(array_radom, array_ascending, array_descending)
